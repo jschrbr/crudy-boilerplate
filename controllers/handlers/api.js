@@ -1,6 +1,10 @@
 module.exports = {
   getApi: async function (req, res) {
-    console.log("hello");
-    res.json({ hello: "hello" });
+    try {
+      res.json({ hello: "hello" });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: err.code });
+    }
   },
 };
